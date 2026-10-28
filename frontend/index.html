@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div>
+            <h1>Student Attendance</h1>
+            <p>Manage students and track daily attendance</p>
+        </div>
+        <div class="header-date" id="todayDate"></div>
+    </header>
+
+    <main class="container">
+
+        <!-- Dashboard summary -->
+        <section class="stats">
+            <div class="stat-card">
+                <h3>Total Students</h3>
+                <p id="totalStudents">0</p>
+            </div>
+            <div class="stat-card present-card">
+                <h3>Present</h3>
+                <p id="presentCount">0</p>
+            </div>
+            <div class="stat-card absent-card">
+                <h3>Absent</h3>
+                <p id="absentCount">0</p>
+            </div>
+            <div class="stat-card percentage-card">
+                <h3>Attendance Rate</h3>
+                <p id="attendanceRate">0%</p>
+            </div>
+        </section>
+
+        <!-- Add student form -->
+        <section class="panel">
+            <h2>Add New Student</h2>
+
+            <form id="studentForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="rollNo">Roll Number</label>
+                        <input type="text" id="rollNo"
+                               placeholder="e.g. 101" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentName">Student Name</label>
+                        <input type="text" id="studentName"
+                               placeholder="Enter student name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentClass">Class / Section</label>
+                        <input type="text" id="studentClass"
+                               placeholder="e.g. CSE-A" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentEmail">Email (optional)</label>
+                        <input type="email" id="studentEmail"
+                               placeholder="student@example.com">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    + Add Student
+                </button>
+            </form>
+        </section>
+
+        <!-- Attendance management -->
+        <section class="panel">
+            <div class="section-heading">
+                <h2>Manage Attendance</h2>
+
+                <div class="filters">
+                    <input type="date" id="attendanceDate">
+
+                    <input type="search" id="searchInput"
+                           placeholder="Search students...">
+                </div>
+            </div>
+
+            <p class="hint">
+                Select each student's attendance status, then click
+                "Save Attendance".
+            </p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Roll No.</th>
+                            <th>Student Name</th>
+                            <th>Class</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="table-actions">
+                <button id="saveAttendance" class="btn btn-success">
+                    Save Attendance
+                </button>
+
+                <button id="exportCsv" class="btn btn-secondary">
+                    Export CSV
+                </button>
+            </div>
+
+            <p id="message" class="message" role="status"></p>
+        </section>
+
+        <!-- Attendance history -->
+        <section class="panel">
+            <h2>Attendance Summary</h2>
+            <p class="hint">Summary for the selected date.</p>
+
+            <div class="summary-grid">
+                <div>
+                    <span>Present</span>
+                    <strong id="summaryPresent">0</strong>
+                </div>
+                <div>
+                    <span>Absent</span>
+                    <strong id="summaryAbsent">0</strong>
+                </div>
+                <div>
+                    <span>Late</span>
+                    <strong id="summaryLate">0</strong>
+                </div>
+                <div>
+                    <span>Not Marked</span>
+                    <strong id="summaryUnmarked">0</strong>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Student Attendance Management System &copy; 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
